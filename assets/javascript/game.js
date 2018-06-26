@@ -6,8 +6,8 @@ var words = ["hansolo", "chewbaka", "darthvader"]
 // choose word randomly
 var randNum = Math.floor(Math.random() * words.length);
 var chosenWord = words[randNum];
-var rightWord= [];
-var wrongWord= [];
+var rightWord = [];
+var wrongWord = [];
 var underScore = [];
 
 
@@ -21,9 +21,9 @@ var docWrongGuess = document.getElementsByClassName("wrongGuess");
 console.log(chosenWord);
 // creates underscores based on length of word
 var generateUnderScore = () => {
-    for ( var i=0; i < chosenWord.length; i++) {
+    for (var i = 0; i < chosenWord.length; i++) {
         underScore.push("_");
-     }
+    }
 
     return underScore;
 }
@@ -35,31 +35,25 @@ console.log(generateUnderScore());
 document.addEventListener("keypress", (event) => {
     var keyWord = String.fromCharCode(event.keyCode);
     console.log(keyWord);
-// if user guess is right
+    // if user guess is right
     if (chosenWord.indexOf(chosenWord) > -1) {
-    // add to right words array
+        // add to right words array
         rightWord.push(keyWord);
-    // replace underscore with right letter
-    underScore[chosenWord.indexOf(keyWord)] = keyWord;
-    docUnderScore[0].innerHTML = underScore.join(" ");
-    docRightGuess[0].innerHTML = rightWord;
+        // replace underscore with right letter
+        underScore[chosenWord.indexOf(keyWord)] = keyWord;
+        docUnderScore[0].innerHTML = underScore.join(" ");
+        docRightGuess[0].innerHTML = rightWord;
 
-    // checks to see if user word matches guesses
-        if(underScore.join("") == chosenWord) {
+        // checks to see if user word matches guesses
+        if (underScore.join("") == chosenWord) {
             alert("You Win");
-    
+
+        } else {
+            wrongWord.push(keyWord);
+            docWrongGuess[0].innerHTML = wrongWord;
         }
+
     }
-
-    else {
-        wrongWord.push(keyWord);
-        docWrongGuess[0].innerHTML = wrongWord;
-    }
-
-   
-    
-
-
 });
 
 docUnderScore[0].innerHTML = generateUnderScore().join(" ");

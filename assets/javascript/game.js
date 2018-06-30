@@ -26,20 +26,27 @@ var generateUnderScore = () => {
     }
 
     return underScore;
+    
+    
 }
+
 
 console.log(generateUnderScore());
 
 // gets users guess
 
+
 document.addEventListener("keypress", (event) => {
+    
+
+
     var keyWord = String.fromCharCode(event.keyCode);
     console.log(keyWord);
     // if user guess is right
-    if (chosenWord.indexOf(chosenWord) > -1) {
+    if (chosenWord.indexOf(keyWord) > -1) {
         // add to right words array
         rightWord.push(keyWord);
-        // replace underscore with right letter
+        // replace underscore with right varter
         underScore[chosenWord.indexOf(keyWord)] = keyWord;
         docUnderScore[0].innerHTML = underScore.join(" ");
         docRightGuess[0].innerHTML = rightWord;
@@ -47,16 +54,19 @@ document.addEventListener("keypress", (event) => {
         // checks to see if user word matches guesses
         if (underScore.join("") == chosenWord) {
             alert("You Win");
+        }
 
-        } else {
+        else {
             wrongWord.push(keyWord);
             docWrongGuess[0].innerHTML = wrongWord;
         }
-
+        
     }
+    
+
 });
 
-docUnderScore[0].innerHTML = generateUnderScore().join(" ");
+
 
 
 // check if guess is right

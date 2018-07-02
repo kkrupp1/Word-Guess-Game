@@ -57,7 +57,7 @@ document.addEventListener("keypress", (event) => {
 
         // checks to see if user word matches guesses
     if (underScore.join("") == chosenWord) {
-            alert("You Win");
+            alert("You Win! To play again, refresh the page!");
       }
     }
 

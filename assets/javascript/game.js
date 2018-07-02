@@ -2,7 +2,7 @@
 // ==================================
 
 // create an array of words
-var words = ["hansolo", "chewbaka", "darthvader"]
+var words = ["kylo ren", "mace windu", "lando", "c-3po", "obi-wan", "rey", "luke", "yoda",]
 // choose word randomly
 var randNum = Math.floor(Math.random() * words.length);
 var chosenWord = words[randNum];
@@ -19,6 +19,12 @@ var docWrongGuess = document.getElementsByClassName("wrongGuess");
 
 // testing
 console.log(chosenWord);
+
+// explain to the user how to start the game
+alert("Guess a Star Wars Character! Press OK, then type any letter to begin the game.");
+
+
+
 // creates underscores based on length of word
 var generateUnderScore = () => {
     for (var i = 0; i < chosenWord.length; i++) {
@@ -26,7 +32,6 @@ var generateUnderScore = () => {
     }
 
     return underScore;
-    
     
 }
 
@@ -38,12 +43,11 @@ console.log(generateUnderScore());
 
 document.addEventListener("keypress", (event) => {
     
-
-
-    var keyWord = String.fromCharCode(event.keyCode);
+ var keyWord = String.fromCharCode(event.keyCode);
     console.log(keyWord);
     // if user guess is right
     if (chosenWord.indexOf(keyWord) > -1) {
+
         // add to right words array
         rightWord.push(keyWord);
         // replace underscore with right varter
@@ -52,19 +56,20 @@ document.addEventListener("keypress", (event) => {
         docRightGuess[0].innerHTML = rightWord;
 
         // checks to see if user word matches guesses
-        if (underScore.join("") == chosenWord) {
+    if (underScore.join("") == chosenWord) {
             alert("You Win");
-        }
+      }
+    }
 
         else {
             wrongWord.push(keyWord);
             docWrongGuess[0].innerHTML = wrongWord;
         }
         
-    }
     
 
 });
+
 
 
 
